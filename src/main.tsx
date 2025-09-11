@@ -7,7 +7,7 @@ import { StrictMode } from "react";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Facebook-UI">
       <HeroUIProvider>
         <App />
       </HeroUIProvider>

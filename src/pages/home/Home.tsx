@@ -77,7 +77,6 @@ export default function Home() {
             </div>
             <div className="postsSection pt-2 pb-2 mt-2 bg-transparent w-[560px] h-auto ">
               <Post />
-              {/* <Post />
               <Post />
               <Post />
               <Post />
@@ -85,7 +84,8 @@ export default function Home() {
               <Post />
               <Post />
               <Post />
-              <Post /> */}
+              <Post />
+              <Post />
             </div>
           </div>
         </div>

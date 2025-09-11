@@ -189,39 +189,8 @@ export default function Header() {
         </div>
         {/* Right: Controls */}
         <div className="flex items-center gap-2">
-          {/* On mobile: just show a menu button */}
-          <div className="flex sm:hidden relative">
-            <button
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer"
-              onMouseEnter={() => setHoveredButton("mobile-menu")}
-              onMouseLeave={() => setHoveredButton(null)}
-            >
-              <span className="sr-only">Menu</span>
-              {/* You can swap this for a real menu/drawer */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-700"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-            {hoveredButton === "mobile-menu" && (
-              <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50">
-                Menu
-              </span>
-            )}
-          </div>
-
-          {/* On tablet/desktop: show controls inline */}
-          <div className="hidden sm:flex items-center gap-3 relative">
+          {/* Show all four icons on all screen sizes */}
+          <div className="flex items-center gap-1 sm:gap-3 relative">
             {/* Menu */}
             <div className="relative">
               <button

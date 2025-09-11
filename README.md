@@ -2,6 +2,12 @@
 
 A modern, responsive Facebook-inspired user interface built with React, TypeScript, and Tailwind CSS. This project replicates Facebook's core UI components and interactions with a focus on clean design, smooth animations, and excellent user experience.
 
+## 🌐 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Project-blue?style=for-the-badge&logo=github)](https://yossif-hafney.github.io/Facebook-UI/)
+
+**👆 Click above to see the Facebook UI Clone in action!**
+
 ## 🚀 Features
 
 ### Core Components

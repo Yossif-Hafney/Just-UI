@@ -1,0 +1,157 @@
+/* Facebook UI Typography and Icons */
+
+/* Facebook Font System */
+:root {
+  /* Facebook uses a font stack similar to this */
+  --facebook-font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --facebook-font-weight-light: 300;
+  --facebook-font-weight-normal: 400;
+  --facebook-font-weight-medium: 500;
+  --facebook-font-weight-semibold: 600;
+  --facebook-font-weight-bold: 700;
+}
+
+/* Facebook Typography Classes */
+.fb-text-xs {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem;
+}
+
+.fb-text-sm {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem;
+}
+
+.fb-text-base {
+  font-size: 0.9375rem; /* 15px - Facebook's default */
+  line-height: 1.34;
+}
+
+.fb-text-lg {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.5rem;
+}
+
+.fb-text-xl {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem;
+}
+
+.fb-text-2xl {
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem;
+}
+
+.fb-text-3xl {
+  font-size: 1.75rem; /* 28px */
+  line-height: 2.25rem;
+}
+
+/* Font weights */
+.fb-font-light {
+  font-weight: var(--facebook-font-weight-light);
+}
+
+.fb-font-normal {
+  font-weight: var(--facebook-font-weight-normal);
+}
+
+.fb-font-medium {
+  font-weight: var(--facebook-font-weight-medium);
+}
+
+.fb-font-semibold {
+  font-weight: var(--facebook-font-weight-semibold);
+}
+
+.fb-font-bold {
+  font-weight: var(--facebook-font-weight-bold);
+}
+
+/* Icon utilities */
+.fb-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-icon-sm {
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.875rem;
+}
+
+.fb-icon-md {
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1rem;
+}
+
+.fb-icon-lg {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.fb-icon-xl {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+
+/* Common Facebook icon colors */
+.fb-icon-primary {
+  color: #1877f2; /* Facebook blue */
+}
+
+.fb-icon-secondary {
+  color: #65676b; /* Facebook gray */
+}
+
+.fb-icon-success {
+  color: #42b883; /* Green */
+}
+
+.fb-icon-danger {
+  color: #e74c3c; /* Red */
+}
+
+.fb-icon-warning {
+  color: #f39c12; /* Orange */
+}
+
+/* Scrollbar only appears on hover, but keeps space reserved */
+.scrollbar-hover-show {
+  overflow-y: auto;
+  scrollbar-gutter: stable; /* Prevent layout shift when scrollbar appears */
+  scrollbar-width: none; /* Firefox: hidden by default */
+  -ms-overflow-style: none; /* IE/Edge Legacy */
+}
+
+/* Hide default scrollbar in WebKit */
+.scrollbar-hover-show::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* On hover: show custom scrollbar */
+.scrollbar-hover-show:hover {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #d1d5db #f9fafb; /* thumb / track */
+}
+
+.scrollbar-hover-show:hover::-webkit-scrollbar {
+  width: 8px;
+  background: #f9fafb; /* track */
+}
+
+.scrollbar-hover-show:hover::-webkit-scrollbar-thumb {
+  background: #d1d5db; /* thumb */
+  border-radius: 9999px;
+  border: 2px solid #f9fafb; /* padding effect */
+}
+
+.scrollbar-hover-show:hover::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* darker on hover */
+}

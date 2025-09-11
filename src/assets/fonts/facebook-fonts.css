@@ -1,0 +1,88 @@
+/* Facebook Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap");
+
+/* Facebook UI Typography System */
+:root {
+  /* Facebook uses system fonts with fallbacks */
+  --facebook-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  /* Font weights */
+  --facebook-font-weight-light: 300;
+  --facebook-font-weight-normal: 400;
+  --facebook-font-weight-medium: 500;
+  --facebook-font-weight-semibold: 600;
+  --facebook-font-weight-bold: 700;
+
+  /* Facebook Colors */
+  --facebook-blue: #1877f2;
+  --facebook-green: #42b883;
+  --facebook-gray: #65676b;
+  --facebook-light-gray: #e4e6ea;
+  --facebook-dark-gray: #3a3b3c;
+}
+
+/* Base typography */
+* {
+  font-family: var(--facebook-font-family);
+}
+
+body {
+  font-family: var(--facebook-font-family);
+  font-weight: var(--facebook-font-weight-normal);
+  line-height: 1.34;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Facebook Typography Classes */
+.fb-text-xs {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem;
+}
+
+.fb-text-sm {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem;
+}
+
+.fb-text-base {
+  font-size: 0.9375rem; /* 15px - Facebook's default */
+  line-height: 1.34;
+}
+
+.fb-text-lg {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.5rem;
+}
+
+.fb-text-xl {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem;
+}
+
+.fb-text-2xl {
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem;
+}
+
+/* Font weights */
+.fb-font-light {
+  font-weight: var(--facebook-font-weight-light);
+}
+
+.fb-font-normal {
+  font-weight: var(--facebook-font-weight-normal);
+}
+
+.fb-font-medium {
+  font-weight: var(--facebook-font-weight-medium);
+}
+
+.fb-font-semibold {
+  font-weight: var(--facebook-font-weight-semibold);
+}
+
+.fb-font-bold {
+  font-weight: var(--facebook-font-weight-bold);
+}

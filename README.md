@@ -1,10 +1,10 @@
-# Facebook UI Clone
+# Social-UI
 
 A modern, responsive Facebook-inspired user interface built with React, TypeScript, and Tailwind CSS. This project replicates Facebook's core UI components and interactions with a focus on clean design, smooth animations, and excellent user experience.
 
 ## 🌐 Live Demo
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Project-blue?style=for-the-badge&logo=github)](https://yossif-hafney.github.io/Facebook-UI/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Project-blue?style=for-the-badge&logo=github)](https://yossif-hafney.github.io/Social-UI/)
 
 **👆 Click above to see the Facebook UI Clone in action!**
 
@@ -40,7 +40,7 @@ A modern, responsive Facebook-inspired user interface built with React, TypeScri
 ## 📁 Project Structure
 
 ```
-Facebook-UI/
+Social-UI/
 ├── public/
 │   └── assets/
 │       ├── fonts/
@@ -169,7 +169,7 @@ If you need to configure environment variables:
 2. Add your environment variables:
    ```env
    VITE_API_URL=http://localhost:3000/api
-   VITE_APP_NAME=Facebook UI Clone
+   VITE_APP_NAME=Social-UI
    ```
 
 #### Step 5: Start the Development Server
@@ -332,7 +332,7 @@ After successful setup:
 
 ---
 
-**🎉 You're all set!** The Facebook UI application should now be running smoothly on your local machine.
+**🎉 You're all set!** The Social-UI application should now be running smoothly on your local machine.
 
 ## 📱 Key Components
 
@@ -412,7 +412,7 @@ After successful setup:
 
 ## 📄 License
 
-This project is for educational purposes. Facebook's design and branding are trademarks of Meta Platforms, Inc.
+This project is for educational purposes. Facebook's design and branding are trademarks of Meta Platforms, Inc. The project name 'Social-UI' is used for educational and non-commercial purposes.
 
 ## 🙏 Acknowledgments
 
@@ -426,7 +426,7 @@ This project is for educational purposes. Facebook's design and branding are tra
 **Yossif Hafney**
 
 - GitHub: [@Yossif-Hafney](https://github.com/Yossif-Hafney)
-- Project Link: [https://github.com/Yossif-Hafney/Facebook-UI](https://github.com/Yossif-Hafney/Facebook-UI)
+- Project Link: [https://github.com/Yossif-Hafney/Social-UI](https://github.com/Yossif-Hafney/Social-UI)
 
 ---
 

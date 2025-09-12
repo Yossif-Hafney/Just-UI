@@ -154,7 +154,7 @@ export function LoginForm({
               disabled={isLoading}
               className="w-full h-[44px] text-[18px] font-bold cursor-pointer rounded-md disabled:opacity-50"
             >
-              {isLoading ? "Logging in..." : <Link to="/home">Log In</Link>}
+              {isLoading ? "Logging in..." : <Link to="/Home">Log In</Link>}
             </Button>
           </div>
 

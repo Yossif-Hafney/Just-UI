@@ -1,9 +1,9 @@
 {
-  "name": "facebook-ui",
+  "name": "Social-UI",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://yossif-hafney.github.io/Facebook-UI/",
+  "homepage": "https://github.com/Yossif-Hafney/Social-UI",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

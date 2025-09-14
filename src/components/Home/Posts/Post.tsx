@@ -7,8 +7,8 @@ import { FaShare } from "react-icons/fa";
 
 export default function Post() {
   return (
-    <div className="post w-[560px] h-full bg-white rounded-lg shadow-md mb-2.5">
-      <div className="postHeader p-3 border-b border-[#e6e6e6] relative">
+    <div className="post w-full h-full bg-white rounded-lg shadow-md mb-2.5">
+      <div className="postHeader p-3 pb-0  relative">
         <div className="postAuthor w-full h-12 relative">
           <img
             src="https://m.media-amazon.com/images/S/pv-target-images/d29aff430ff9a77db31c9e2a9867f6583c3a4b5e99c36135b677002a1c203c0a._SX1080_FMjpg_.jpg"
@@ -25,7 +25,7 @@ export default function Post() {
           <div className="w-9 h-9 bg-transparent rounded-full cursor-pointer">
             <div className="m-auto text-xl text-black w-5 h-5">
               <svg viewBox="0 0 20 20" fill="currentColor">
-                <g fill-rule="evenodd" transform="translate(-446 -350)">
+                <g fillRule="evenodd" transform="translate(-446 -350)">
                   <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
                 </g>
               </svg>
@@ -39,7 +39,7 @@ export default function Post() {
         </div>
       </div>
       {/* Post Content */}
-      <div className="postContentContainer pt-3 pb-3">
+      <div className="postContentContainer pb-3">
         <p className="postContent h-auto p-2  leading-5">
           This is the content of the post. Lorem ipsum dolor sit amet
           consectetur adipisicing elit. Consequuntur excepturi animi labore
@@ -49,11 +49,11 @@ export default function Post() {
         <img
           src="https://scontent.fcai19-1.fna.fbcdn.net/v/t39.30808-6/545816991_1168169692037189_1899198128458746195_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=IvDtIMzEVhgQ7kNvwGPM8FH&_nc_oc=AdlsDb0PkVR62KGAQBq1s92HXMyqZqu44zhcBJuqocRViZZZB5SUosZNLGb9bCPWiEE&_nc_zt=23&_nc_ht=scontent.fcai19-1.fna&_nc_gid=OjBzmBl98hLgTwcuZpZnoA&oh=00_AfbEp-NH0Yov6aoTyH7KNPwDNP1oedTiTyq98qgflsOhsQ&oe=68C6818F"
           alt="LuKa modric"
-          className="w-full h-[630px] mt-2 mb-2 object-cover "
+          className="w-full h-[630px] mt-2 object-cover "
         />
       </div>
       {/* Post Stats */}
-      <div className="postStats border-t border-[#e6e6e6] pt-2 pb-2 px-3 flex flex-row justify-between text-sm text-gray-600">
+      <div className="postStats pb-2 px-3 flex flex-row justify-between text-sm text-gray-600">
         <div className="likes flex items-center gap-1">
           <div className="likeIcons flex -space-x-1 relative">
             <div className="likeIcon w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center border-2 border-white relative">
@@ -71,7 +71,7 @@ export default function Post() {
         </div>
       </div>
       {/* Post Actions */}
-      <div className="postActions border-t border-[#e6e6e6] pt-2 pb-2 flex flex-row justify-around">
+      <div className="postActions mx-1 border-t border-[#e6e6e6] pt-2 pb-1 flex flex-row justify-around">
         <div className="relative w-full flex justify-center">
           <div className="group/like relative w-full flex justify-center">
             <button className="postActionButton flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors w-full justify-center group relative">
@@ -113,7 +113,7 @@ export default function Post() {
           <FaRegComment className="text-lg" />
           <span className="text-sm font-semibold">Comment</span>
         </button>
-        <button className="postActionButton flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors w-full justify-center">
+        <button className="postActionButton flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors w-full justify-center max-[325px]:hidden">
           <FaShare className="text-lg" />
           <span className="text-sm font-semibold">Share</span>
         </button>

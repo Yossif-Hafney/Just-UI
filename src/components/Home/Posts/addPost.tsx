@@ -17,17 +17,17 @@ export default function CreatePost() {
           What's on your mind?
         </button>
       </div>
-      <div>
+      <div className=" w-full">
         <div className="flex justify-around items-center py-2">
-          <button className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-full px-4 py-2">
+          <button className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-md px-4 py-2 max-[325px]:py-0 ">
             <IoVideocam className="h-5 w-5 text-red-500" />
             <span className="text-gray-600">Live video</span>
           </button>
-          <button className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-full px-4 py-2">
+          <button className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-md px-4 py-2 max-[325px]:hidden">
             <IoMdPhotos className="h-5 w-5 text-green-400" />
             <span className="text-gray-600">Photo/Video</span>
           </button>
-          <button className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-full px-4 py-2">
+          <button className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-md px-4 py-2 max-[505px]:hidden">
             <MdOutlineAddReaction className="h-5 w-5 text-yellow-400" />
             <span className="text-gray-600">Feelings/activity</span>
           </button>

@@ -116,17 +116,17 @@ export default function Register() {
   });
   return (
     <>
-      <div className="m-0 p-0 outline-none box-border w-full flex justify-center items-center">
-        <img
-          src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
-          alt="Facebook logo"
-          className="h-[100px]"
-        />
-      </div>
-      <div className="w-full ">
-        <div className="ml-auto mr-auto  pb-5 w-[980px] h-[622.33px] ">
-          <div className="m-0 p-0 outline-none w-full flex justify-center items-center ">
-            <div className=" rounded-lg w-[432px] box-border relative shadow-2xl z-[1] pt-2.5 pb-2.5 pr-4 pl-4 bg-white">
+      <div className="w-full">
+        <div className="mx-auto pb-5 w-full max-w-[980px] min-h-screen">
+          <div className="m-0 p-0 outline-none w-full flex flex-col justify-center items-center min-h-screen px-4 gap-6">
+            <div className="flex justify-center">
+              <img
+                src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
+                alt="Facebook logo"
+                className="h-[100px]"
+              />
+            </div>
+            <div className="rounded-lg w-full max-w-sm sm:max-w-md lg:max-w-lg box-border relative shadow-2xl z-[1] pt-2.5 pb-2.5 pr-4 pl-4 bg-white">
               <div className="text-center">
                 <h2 className="text-2xl font-bold">Create a new account</h2>
                 <p className="text-[15px] text-gray-600 pb-2.5">
@@ -134,7 +134,7 @@ export default function Register() {
                 </p>
               </div>
 
-              <div className="w-[400px] rounded-b-lg pt-4 pb-4 border-t-1 border-t-[#DADDE1]">
+              <div className="w-full rounded-b-lg pt-4 pb-4 border-t-1 border-t-[#DADDE1]">
                 <form className="space-y-3">
                   {/* Name Fields */}
                   <div className="flex gap-2">
@@ -194,7 +194,7 @@ export default function Register() {
 
                         {/* Tooltip */}
                         {showBirthdayTooltip && (
-                          <div className="absolute left-[-342px] top-0 w-[310px] bg-white text-[#65676b] text-[12px] rounded-sm shadow-lg z-10 border-gray-600">
+                          <div className="absolute left-0 sm:left-[-310px] lg:left-[-342px] top-6 sm:top-0 w-[280px] sm:w-[310px] bg-white text-[#65676b] text-[12px] rounded-sm shadow-lg z-10 border-gray-600">
                             <div className="relative p-3 text-[13px] leading-4">
                               <b>Providing your birthday</b> helps make sure
                               that you get the right Facebook experience for

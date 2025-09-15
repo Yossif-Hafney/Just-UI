@@ -4,9 +4,9 @@ A modern, responsive Facebook-inspired user interface built with React, TypeScri
 
 ## 🌐 Live Demo
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Project-blue?style=for-the-badge&logo=github)](https://yossif-hafney.github.io/Social-UI/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-JustUI-blueviolet?style=for-the-badge&logo=vercel)](https://justui.vercel.app/)
 
-**👆 Click above to see the Facebook UI Clone in action!**
+**👆 Click above to view the official JustUI design system and component demo!**
 
 ## 🚀 Features
 

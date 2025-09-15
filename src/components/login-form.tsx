@@ -31,26 +31,9 @@ export function LoginForm({
 
   const validateForm = () => {
     const newErrors = { email: "", password: "" };
-    let isValid = true;
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-      isValid = false;
-    }
-
-    if (!formData.password.trim()) {
-      newErrors.password = "Password is required";
-      isValid = false;
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-      isValid = false;
-    }
-
+    // No required validation
     setErrors(newErrors);
-    return isValid;
+    return true;
   };
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -28,11 +28,9 @@ export function LoginForm({
     password: "",
   });
 
-  
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = "/Home";
+    window.location.href = "/home";
   };
 
   const handleInputChange =

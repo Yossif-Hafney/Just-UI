@@ -13,7 +13,6 @@ interface LoginFormProps extends React.ComponentProps<"div"> {
 
 export function LoginForm({
   className,
-  onLogin,
   onForgotPassword,
   onCreateAccount,
   isLoading = false,
@@ -29,18 +28,11 @@ export function LoginForm({
     password: "",
   });
 
-  const validateForm = () => {
-    const newErrors = { email: "", password: "" };
-    // No required validation
-    setErrors(newErrors);
-    return true;
-  };
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm() && onLogin) {
-      onLogin(formData);
-    }
+    window.location.href = "/Home";
   };
 
   const handleInputChange =
@@ -135,7 +127,7 @@ export function LoginForm({
               disabled={isLoading}
               className="w-full h-[44px] text-[18px] font-bold cursor-pointer rounded-md disabled:opacity-50"
             >
-              {isLoading ? "Logging in..." : <Link to="/Home">Log In</Link>}
+              {isLoading ? "Logging in..." : "Log In"}
             </Button>
           </div>
 

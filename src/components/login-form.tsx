@@ -100,7 +100,6 @@ export function LoginForm({
                 errors.email && "border-red-500 focus:border-red-500"
               )}
               disabled={isLoading}
-              required
               autoComplete="email"
               aria-describedby={errors.email ? "email-error" : undefined}
             />
@@ -131,7 +130,6 @@ export function LoginForm({
                 errors.password && "border-red-500 focus:border-red-500"
               )}
               disabled={isLoading}
-              required
               autoComplete="current-password"
               aria-describedby={errors.password ? "password-error" : undefined}
             />

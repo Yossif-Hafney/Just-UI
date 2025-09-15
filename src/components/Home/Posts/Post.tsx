@@ -41,14 +41,11 @@ export default function Post() {
       {/* Post Content */}
       <div className="postContentContainer pb-3">
         <p className="postContent h-auto p-2  leading-5">
-          This is the content of the post. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Consequuntur excepturi animi labore
-          facere quibusdam accusantium blanditiis, dolores voluptatum magnam
-          iste sed eaque vero laboriosam eos quia quo, itaque illum magni!
+          This is the content of the post.
         </p>
         <img
-          src="https://scontent.fcai19-1.fna.fbcdn.net/v/t39.30808-6/545816991_1168169692037189_1899198128458746195_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=IvDtIMzEVhgQ7kNvwGPM8FH&_nc_oc=AdlsDb0PkVR62KGAQBq1s92HXMyqZqu44zhcBJuqocRViZZZB5SUosZNLGb9bCPWiEE&_nc_zt=23&_nc_ht=scontent.fcai19-1.fna&_nc_gid=OjBzmBl98hLgTwcuZpZnoA&oh=00_AfbEp-NH0Yov6aoTyH7KNPwDNP1oedTiTyq98qgflsOhsQ&oe=68C6818F"
-          alt="LuKa modric"
+          src="https://images.pexels.com/photos/586687/pexels-photo-586687.jpeg"
+          alt="City"
           className="w-full h-[630px] mt-2 object-cover "
         />
       </div>

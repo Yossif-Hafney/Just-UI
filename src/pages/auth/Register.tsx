@@ -380,7 +380,11 @@ export default function Register() {
                     </div>
 
                     {/* Sign Up Button */}
-                    <div className="flex justify-center mt-6 mb-4">
+
+                    <Link
+                      to="/home"
+                      className="w-full flex justify-center mt-6 mb-4"
+                    >
                       <Button
                         variant="facebook-register"
                         type="submit"
@@ -388,7 +392,8 @@ export default function Register() {
                       >
                         Sign Up
                       </Button>
-                    </div>
+                    </Link>
+
                     <div className=" mt-2 pt-2.5 relative text-center">
                       <p className="text-sm cursor-pointer text-[#1877f2] font-sans font-semibold text-[17px] leading-5">
                         <Link to="/">Already have an account</Link>

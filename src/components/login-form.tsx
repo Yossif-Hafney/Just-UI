@@ -13,6 +13,7 @@ interface LoginFormProps extends React.ComponentProps<"div"> {
 
 export function LoginForm({
   className,
+  onLogin,
   onForgotPassword,
   onCreateAccount,
   isLoading = false,
@@ -28,9 +29,35 @@ export function LoginForm({
     password: "",
   });
 
+  const validateForm = () => {
+    const newErrors = { email: "", password: "" };
+    let isValid = true;
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+      isValid = false;
+    }
+
+    if (!formData.password.trim()) {
+      newErrors.password = "Password is required";
+      isValid = false;
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = "/home";
+    if (validateForm() && onLogin) {
+      onLogin(formData);
+    }
   };
 
   const handleInputChange =
@@ -119,14 +146,16 @@ export function LoginForm({
 
           {/* Login Button */}
           <div className="pt-1">
-            <Button
-              variant="facebook-login"
-              type="submit"
-              disabled={isLoading}
-              className="w-full h-[44px] text-[18px] font-bold cursor-pointer rounded-md disabled:opacity-50"
-            >
-              {isLoading ? "Logging in..." : "Log In"}
-            </Button>
+            <Link to="/home" className="w-full">
+              <Button
+                variant="facebook-login"
+                type="button" // not submit anymore since it's just navigation
+                disabled={isLoading}
+                className="w-full h-[44px] text-[18px] font-bold cursor-pointer rounded-md disabled:opacity-50"
+              >
+                {isLoading ? "Logging in..." : "Log In"}
+              </Button>
+            </Link>
           </div>
 
           {/* Forgotten Password Link */}

@@ -4,7 +4,7 @@ A modern, responsive Facebook-inspired user interface built with React, TypeScri
 
 ## 🌐 Live Demo
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-JustUI-blueviolet?style=for-the-badge&logo=vercel)](https://just-ui.netlify.app/
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-JustUI-blueviolet?style=for-the-badge&logo=vercel)](https://just-ui.netlify.app/)
 
 **👆 Click above to view the official JustUI design system and component demo!**
 

@@ -9,7 +9,7 @@ export default function Login() {
           {/* Left side: Logo + tagline */}
           <div className="text-center lg:text-left lg:pr-8 mb-8 lg:mb-0 flex-1">
             <img
-              className="w-60 lg:w-80 mx-auto lg:mx-0"
+              className="w-60  lg:w-80 mx-auto lg:mx-0"
               src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg"
               alt="Facebook logo"
             />

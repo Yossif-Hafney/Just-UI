@@ -57,6 +57,7 @@ export default function VideoPlayer({ src, poster, title }: VideoPlayerProps) {
         poster={poster}
         playsInline
         streamType="on-demand"
+        crossOrigin="anonymous"
       >
         <MediaProvider />
         <DefaultVideoLayout icons={defaultLayoutIcons} />

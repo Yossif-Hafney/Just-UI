@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
-
+import { useStatusRowScroll, posts } from "@/logic/homeLogic";
 import LeftAppSidebarHome from "./sidebar/leftAppSideBar";
 import RightAppSidebarHome from "./sidebar/rightAppSideBar";
 import CreatePost from "@/components/Home/Posts/addPost";
@@ -10,27 +9,7 @@ import StatusCard from "@/components/Home/statusCard";
 import Post from "@/components/Home/Posts/Post";
 
 export default function Home() {
-  const statusRowRef = useRef<HTMLDivElement>(null);
-  const [showLeft, setShowLeft] = useState(false);
-
-  const scrollStatusRow = (direction: "left" | "right") => {
-    const row = statusRowRef.current;
-    if (!row) return;
-    const scrollAmount = 120;
-    row.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => {
-    const row = statusRowRef.current;
-    if (!row) return;
-    const handleScroll = () => setShowLeft(row.scrollLeft > 0);
-    row.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => row.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { statusRowRef, showLeft, scrollStatusRow } = useStatusRowScroll();
 
   return (
     <>
@@ -76,16 +55,16 @@ export default function Home() {
               </button>
             </div>
             <div className="postsSection  pb-2 mt-2 bg-transparent w-full h-auto ">
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
+              {posts.map((post, idx) => (
+                <Post
+                  key={idx}
+                  img={post.img}
+                  author={post.author}
+                  timestamp={post.timestamp}
+                  content={post.content}
+                  media={post.media}
+                />
+              ))}
             </div>
           </div>
         </div>

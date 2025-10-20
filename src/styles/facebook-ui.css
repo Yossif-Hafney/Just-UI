@@ -1,3 +1,24 @@
+/* Always visible custom scrollbar */
+.scrollbar-custom {
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #d1d5db #f9fafb; /* thumb / track */
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 12px;
+  background: #f9fafb; /* track */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #d1d5db; /* thumb */
+  border-radius: 9999px;
+  border: 2px solid #f9fafb; /* padding effect */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* darker on hover */
+}
 /* Facebook UI Typography and Icons */
 
 /* Facebook Font System */

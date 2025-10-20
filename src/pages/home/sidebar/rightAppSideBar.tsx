@@ -27,7 +27,7 @@ export default function RightAppSidebarHome() {
               {
                 <SidebarMenuItem className="relative">
                   <SidebarMenuButton className="p-0 h-auto w-full bg-transparent">
-                    <div className="w-full min-h-[64px] relative">
+                    <div className="w-full relative">
                       {/* Ads Section */}
                       <div className="w-full">
                         <div className="mb-3 w-full rounded-lg overflow-hidden shadow border border-gray-200 bg-white flex flex-col items-center">

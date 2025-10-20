@@ -4,21 +4,53 @@ import { BsFillEmojiSurpriseFill } from "react-icons/bs";
 import { BsEmojiGrinFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
+import MediaGrid from "./MediaGrid";
+import { useState } from "react";
+import type { MediaItem } from "@/logic/mediaGridLogic";
+import VideoPlayer from "@/components/VideoPlayer";
+import { isVideoOnly, getVideoUrl } from "@/logic/videoLogic";
 
-export default function Post() {
+interface PostProps {
+  img: string;
+  author: string;
+  timestamp: string;
+  content?: string; // post text content
+  media?: string[] | MediaItem[]; // array of image URLs or media objects
+}
+
+export default function Post({
+  img,
+  author,
+  timestamp,
+  content = "",
+  media,
+}: PostProps) {
+  const [showAll, setShowAll] = useState(false);
+  const [showVideoPlayer, setShowVideoPlayer] = useState<string | null>(null);
+  const words = content.split(" ");
+  const isLong = words.length > 15;
+  const displayText =
+    showAll || !isLong ? content : words.slice(0, 15).join(" ") + "...";
+
+  // Check if media contains only one video (no other media)
+  const isSingleVideo = isVideoOnly(media);
+  const singleVideoUrl = isSingleVideo ? getVideoUrl(media) : null;
+
+  const handleVideoClick = (videoUrl: string) => {
+    // Open fullscreen video player for multiple media
+    setShowVideoPlayer(videoUrl);
+  };
+
   return (
     <div className="post w-full h-full bg-white rounded-lg shadow-md mb-2.5">
       <div className="postHeader p-3 pb-0  relative">
         <div className="postAuthor w-full h-12 relative">
-          <img
-            src="https://m.media-amazon.com/images/S/pv-target-images/d29aff430ff9a77db31c9e2a9867f6583c3a4b5e99c36135b677002a1c203c0a._SX1080_FMjpg_.jpg"
-            className="rounded-full w-10 h-10"
-          />
+          <img src={img} className="rounded-full w-10 h-10" alt={author} />
           <div className="authorInfo ml-3  absolute top-0 left-9">
             <a className="authorName text-sm font-semibold cursor-pointer hover:underline transition-colors">
-              John Doe
+              {author}
             </a>
-            <p className="authorTimestamp text-xs text-gray-500">2 hours ago</p>
+            <p className="authorTimestamp text-xs text-gray-500">{timestamp}</p>
           </div>
         </div>
         <div className="absolute top-4 right-3 flex flex-row ">
@@ -39,16 +71,56 @@ export default function Post() {
         </div>
       </div>
       {/* Post Content */}
-      <div className="postContentContainer pb-3">
-        <p className="postContent h-auto p-2  leading-5">
-          This is the content of the post.
+      <div className="pb-3">
+        <p className="h-auto p-2 leading-5">
+          {displayText}
+          {isLong && !showAll && (
+            <button
+              className="pl-1 inline bg-transparent font-semibold cursor-pointer outline-none border-none p-0 m-0 hover:underline focus:outline-none text-base box-border"
+              onClick={() => setShowAll(true)}
+            >
+              See more
+            </button>
+          )}
         </p>
-        <img
-          src="https://images.pexels.com/photos/586687/pexels-photo-586687.jpeg"
-          alt="City"
-          className="w-full h-[630px] mt-2 object-cover "
-        />
+        {/* Media photos and videos */}
+        {isSingleVideo && singleVideoUrl ? (
+          // Single video only: play inline in post
+          <VideoPlayer src={singleVideoUrl} />
+        ) : (
+          // Multiple media or images: show grid
+          media &&
+          media.length > 0 &&
+          (typeof media[0] === "string" ? (
+            <MediaGrid
+              images={media as string[]}
+              onVideoClick={handleVideoClick}
+            />
+          ) : (
+            <MediaGrid
+              media={media as MediaItem[]}
+              onVideoClick={handleVideoClick}
+            />
+          ))
+        )}
       </div>
+
+      {/* Fullscreen Video Player Overlay for multiple media */}
+      {showVideoPlayer && (
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
+          <button
+            onClick={() => setShowVideoPlayer(null)}
+            className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-colors"
+          >
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-6 h-6">
+              <path d="M10 8.586l4.95-4.95a1 1 0 1 1 1.414 1.414L11.414 10l4.95 4.95a1 1 0 0 1-1.414 1.414L10 11.414l-4.95 4.95a1 1 0 0 1-1.414-1.414L8.586 10l-4.95-4.95A1 1 0 0 1 5.05 3.636L10 8.586z" />
+            </svg>
+          </button>
+          <div className="w-full max-w-5xl px-4">
+            <VideoPlayer src={showVideoPlayer} />
+          </div>
+        </div>
+      )}
       {/* Post Stats */}
       <div className="postStats pb-2 px-3 flex flex-row justify-between text-sm text-gray-600">
         <div className="likes flex items-center gap-1">

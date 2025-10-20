@@ -1,119 +1,36 @@
 import Footer from "@/components/Footer";
 import { FacebookSelect } from "@/components/facebook-select";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import {
+  useRegisterForm,
+  useBirthdaySelection,
+  useTooltips,
+  dayOptions,
+  monthOptions,
+  yearOptions,
+} from "@/logic/registerLogic";
 
 export default function Register() {
-  const [showBirthdayTooltip, setShowBirthdayTooltip] = useState(false);
-  const [showGenderTooltip, setShowGenderTooltip] = useState(false);
-  const [selectedDay, setSelectedDay] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState("");
-  const [selectedYear, setSelectedYear] = useState("");
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const genderTooltipRef = useRef<HTMLDivElement>(null);
-
-  // Form values and warnings
-  const [formValues, setFormValues] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
-  // removed unused warnings state
-
-  const [warned, setWarned] = useState({
-    firstName: false,
-    lastName: false,
-    email: false,
-    password: false,
-  });
-
-  const handleInputChange =
-    (field: keyof typeof formValues) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormValues((prev) => ({
-        ...prev,
-        [field]: e.target.value,
-      }));
-      // Clear warning if user types anything
-      if (warned[field] && e.target.value.trim()) {
-        setWarned((prev) => ({ ...prev, [field]: false }));
-      }
-    };
-
-  const handleInputBlur = (field: keyof typeof formValues) => () => {
-    if (!formValues[field].trim() && !warned[field]) {
-      setWarned((prev) => ({ ...prev, [field]: true }));
-    }
-  };
-
-  const toggleBirthdayTooltip = () => {
-    setShowBirthdayTooltip(!showBirthdayTooltip);
-  };
-
-  const toggleGenderTooltip = () => {
-    setShowGenderTooltip(!showGenderTooltip);
-  };
-
-  // Handle click outside to close tooltips
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        tooltipRef.current &&
-        !tooltipRef.current.contains(event.target as Node)
-      ) {
-        setShowBirthdayTooltip(false);
-      }
-      if (
-        genderTooltipRef.current &&
-        !genderTooltipRef.current.contains(event.target as Node)
-      ) {
-        setShowGenderTooltip(false);
-      }
-    };
-
-    if (showBirthdayTooltip || showGenderTooltip) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showBirthdayTooltip, showGenderTooltip]);
-
-  // Day options (1-31)
-  const dayOptions = Array.from({ length: 31 }, (_, i) => ({
-    value: String(i + 1),
-    label: String(i + 1),
-  }));
-
-  // Month options
-  const monthOptions = [
-    { value: "1", label: "Jan" },
-    { value: "2", label: "Feb" },
-    { value: "3", label: "Mar" },
-    { value: "4", label: "Apr" },
-    { value: "5", label: "May" },
-    { value: "6", label: "Jun" },
-    { value: "7", label: "Jul" },
-    { value: "8", label: "Aug" },
-    { value: "9", label: "Sep" },
-    { value: "10", label: "Oct" },
-    { value: "11", label: "Nov" },
-    { value: "12", label: "Dec" },
-  ];
-
-  // Year options (current year back 100 years)
-  const yearOptions = Array.from({ length: 100 }, (_, i) => {
-    const year = new Date().getFullYear() - i;
-    return {
-      value: String(year),
-      label: String(year),
-    };
-  });
+  const { formValues, warned, handleInputChange, handleInputBlur } =
+    useRegisterForm();
+  const {
+    selectedDay,
+    setSelectedDay,
+    selectedMonth,
+    setSelectedMonth,
+    selectedYear,
+    setSelectedYear,
+  } = useBirthdaySelection();
+  const {
+    showBirthdayTooltip,
+    showGenderTooltip,
+    tooltipRef,
+    genderTooltipRef,
+    toggleBirthdayTooltip,
+    toggleGenderTooltip,
+  } = useTooltips();
   return (
     <>
       <div className="w-full">

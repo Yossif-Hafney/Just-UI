@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLoginForm, type LoginFormData } from "@/logic/loginLogic";
 
 interface LoginFormProps extends React.ComponentProps<"div"> {
-  onLogin?: (data: { email: string; password: string }) => void;
+  onLogin?: (data: LoginFormData) => void;
   onForgotPassword?: () => void;
   onCreateAccount?: () => void;
   isLoading?: boolean;
@@ -19,63 +19,8 @@ export function LoginForm({
   isLoading = false,
   ...props
 }: LoginFormProps) {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const validateForm = () => {
-    const newErrors = { email: "", password: "" };
-    let isValid = true;
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-      isValid = false;
-    }
-
-    if (!formData.password.trim()) {
-      newErrors.password = "Password is required";
-      isValid = false;
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validateForm() && onLogin) {
-      onLogin(formData);
-    }
-  };
-
-  const handleInputChange =
-    (field: keyof typeof formData) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData((prev) => ({
-        ...prev,
-        [field]: e.target.value,
-      }));
-
-      // Clear error when user starts typing
-      if (errors[field]) {
-        setErrors((prev) => ({
-          ...prev,
-          [field]: "",
-        }));
-      }
-    };
+  const { formData, errors, handleSubmit, handleInputChange } =
+    useLoginForm(onLogin);
 
   return (
     <>

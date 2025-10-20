@@ -1,4 +1,11 @@
 import { useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { sortMedia, convertImagesToMedia } from "@/logic/mediaGridLogic";
 import type { MediaItem } from "@/logic/mediaGridLogic";
 
@@ -13,6 +20,9 @@ export default function MediaGrid({
   media = [],
   onVideoClick,
 }: MediaGridProps) {
+  // Overlay for image carousel
+  const [overlayOpen, setOverlayOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   // Track which videos have ever been played
   const [playedVideos, setPlayedVideos] = useState<Set<string>>(new Set());
   const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set());
@@ -50,7 +60,11 @@ export default function MediaGrid({
   );
 
   // Helper to render media (image or video thumbnail)
-  const renderMedia = (item: MediaItem, className: string = "") => {
+  const renderMedia = (
+    item: MediaItem,
+    className: string = "",
+    idx?: number
+  ) => {
     if (item.type === "video") {
       const hasPlayed = playedVideos.has(item.url);
       const isPlaying = playingVideos.has(item.url);
@@ -59,7 +73,6 @@ export default function MediaGrid({
           className="relative w-full h-full cursor-pointer"
           onClick={() => {
             onVideoClick?.(item.url);
-            // Mark video as playing and as played when clicked
             setPlayingVideos((prev) => new Set(prev).add(item.url));
             setPlayedVideos((prev) => new Set(prev).add(item.url));
           }}
@@ -69,7 +82,6 @@ export default function MediaGrid({
             className={`w-full h-full object-cover ${className}`}
             preload="metadata"
             onPause={() => {
-              // Remove from playing set when paused
               setPlayingVideos((prev) => {
                 const newSet = new Set(prev);
                 newSet.delete(item.url);
@@ -81,21 +93,74 @@ export default function MediaGrid({
         </div>
       );
     }
+    // Image: add onClick to open overlay and set current index
     return (
       <img
         src={item.url}
         alt="media"
         loading="lazy"
-        className={`w-full h-full object-cover ${className}`}
+        className={`w-full h-full object-cover cursor-pointer ${className}`}
+        onClick={() => {
+          setCurrentIndex(idx ?? 0);
+          setOverlayOpen(true);
+        }}
       />
     );
   };
+
+  // Overlay carousel for images
+  const imageItems = sortedMedia.filter((item) => item.type !== "video");
+  const hasImages = imageItems.length > 0;
+
+  // Map currentIndex from sortedMedia to imageItems index
+  const getImageIndex = (mediaIndex: number) => {
+    const clickedItem = sortedMedia[mediaIndex];
+    return imageItems.findIndex((item) => item.url === clickedItem.url);
+  };
+
+  // Overlay modal
+  if (overlayOpen && hasImages) {
+    const carouselStartIndex = Math.max(0, getImageIndex(currentIndex));
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90">
+        <button
+          className="absolute top-6 right-8 text-white text-3xl font-bold z-60"
+          onClick={() => setOverlayOpen(false)}
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <Carousel
+          className="w-full flex items-center justify-center"
+          opts={{ startIndex: carouselStartIndex, loop: true }}
+        >
+          <CarouselContent>
+            {imageItems.map((item, idx) => (
+              <CarouselItem
+                key={idx}
+                className="flex items-center justify-center"
+              >
+                <img
+                  src={item.url}
+                  alt="media"
+                  className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-lg mx-auto"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          {imageItems.length > 1 && <CarouselPrevious className="left-4" />}
+          {imageItems.length > 1 && <CarouselNext className="right-4" />}
+        </Carousel>
+      </div>
+    );
+  }
 
   // Single media
   if (count === 1) {
     return (
       <div className="w-full aspect-video relative">
-        {renderMedia(sortedMedia[0])}
+        {renderMedia(sortedMedia[0], "")}
       </div>
     );
   }
@@ -106,7 +171,7 @@ export default function MediaGrid({
       <div className="w-full flex gap-0.5 aspect-[2/1]">
         {sortedMedia.map((item, i) => (
           <div key={i} className="flex-1 relative">
-            {renderMedia(item)}
+            {renderMedia(item, "")}
           </div>
         ))}
       </div>
@@ -117,7 +182,9 @@ export default function MediaGrid({
   if (count === 3) {
     return (
       <div className="w-full flex flex-col gap-0.5 aspect-[2/2.2]">
-        <div className="flex-1 relative">{renderMedia(sortedMedia[0])}</div>
+        <div className="flex-1 relative">
+          {renderMedia(sortedMedia[0], "", 0)}
+        </div>
         <div className="flex flex-row gap-0.5 flex-1 min-h-0">
           {sortedMedia.slice(1).map((item, i) => (
             <div
@@ -126,7 +193,7 @@ export default function MediaGrid({
                 i === 0 ? "rounded-bl-xl" : "rounded-br-xl"
               }`}
             >
-              {renderMedia(item)}
+              {renderMedia(item, "", i + 1)}
             </div>
           ))}
         </div>
@@ -151,7 +218,7 @@ export default function MediaGrid({
                 : "rounded-br-xl"
             }`}
           >
-            {renderMedia(item)}
+            {renderMedia(item, "", i)}
           </div>
         ))}
       </div>
@@ -174,7 +241,7 @@ export default function MediaGrid({
               : "rounded-br-xl"
           }`}
         >
-          {renderMedia(item)}
+          {renderMedia(item, "", i)}
           {i === 3 && (
             <div className="absolute inset-0">{renderOverlay(count - 4)}</div>
           )}
